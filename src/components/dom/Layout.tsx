@@ -1,6 +1,12 @@
-import { useRef, forwardRef, useImperativeHandle } from 'react'
+import { useRef, forwardRef, useImperativeHandle, FC } from 'react'
 
-const Layout = forwardRef(({ children, ...props }, ref) => {
+interface Props {
+    children: React.ReactNode;
+}
+
+export type Ref = HTMLDivElement;
+
+const Layout = forwardRef<Ref, Props>(({ children, ...props }, ref) => {
   const localRef = useRef()
 
   useImperativeHandle(ref, () => localRef.current)
