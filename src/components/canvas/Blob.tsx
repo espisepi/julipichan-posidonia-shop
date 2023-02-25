@@ -35,7 +35,7 @@ export default function Blob({ route, ...props }) {
 
   return (
     <>
-    <group>
+    <group rotation={[0,1,0]}>
       <mesh
         position={[0,1,0]}
         scale={[0.2,0.2,0.2]}
