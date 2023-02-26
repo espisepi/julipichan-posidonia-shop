@@ -3,9 +3,9 @@ import { useContext, useState } from 'react';
 import { Box, Divider, Drawer, IconButton, Input, InputAdornment, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from "@mui/material"
 import { AccountCircleOutlined, AdminPanelSettings, CategoryOutlined, ConfirmationNumberOutlined, EscalatorWarningOutlined, FemaleOutlined, LoginOutlined, MaleOutlined, SearchOutlined, VpnKeyOutlined, DashboardOutlined } from '@mui/icons-material';
 
-//import { UiContext, AuthContext } from '../../context';
-import { UiContext } from '@/features/ui';
-
+//import { UiContext, AuthContext } from '../../../context';
+import { UiContext } from '@/features/ui/context';
+import { AuthContext } from '@/features/auth/context';
 import { useRouter } from 'next/router';
 
 
@@ -13,7 +13,7 @@ export const SideMenu = () => {
 
     const router = useRouter();
     const { isMenuOpen, toggleSideMenu } = useContext( UiContext );
-    // const { user, isLoggedIn, logout } = useContext(  AuthContext );
+    const { user, isLoggedIn, logout } = useContext(  AuthContext );
 
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -60,7 +60,7 @@ export const SideMenu = () => {
                     />
                 </ListItem>
 
-                {/* {
+                {
                     isLoggedIn && (
                         <>
                             <ListItem button>
@@ -81,27 +81,7 @@ export const SideMenu = () => {
                             </ListItem>
                         </>
                     )
-                } */}
-
-                  {/*  Lo mostramos independientemente de este logueado o no */ }
-                        <>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <AccountCircleOutlined/>
-                                </ListItemIcon>
-                                <ListItemText primary={'Perfil'} />
-                            </ListItem>
-
-                            <ListItem 
-                                button 
-                                onClick={() => navigateTo('/orders/history') }
-                            >
-                                <ListItemIcon>
-                                    <ConfirmationNumberOutlined/>
-                                </ListItemIcon>
-                                <ListItemText primary={'Mis Ordenes'} />
-                            </ListItem>
-                        </>
+                }
 
 
                 <ListItem 
@@ -138,7 +118,7 @@ export const SideMenu = () => {
                 </ListItem>
 
 
-                {/* {
+                {
                     isLoggedIn 
                     ? (
                         <ListItem button onClick={ logout }>
@@ -159,12 +139,12 @@ export const SideMenu = () => {
                             <ListItemText primary={'Ingresar'} />
                         </ListItem>
                     )
-                } */}
+                }
 
 
 
                 {/* Admin */}
-                {/* {
+                {
                     user?.role === 'admin' && (
                         <>
                             <Divider />
@@ -205,7 +185,7 @@ export const SideMenu = () => {
                             </ListItem>                        
                         </>
                     )
-                } */}
+                }
             </List>
         </Box>
     </Drawer>

@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import NextLink from 'next/link';
 import { Box, Button, CardActionArea, CardMedia, Grid, Link, Typography } from '@mui/material';
 
-// import { ItemCounter } from '../ui';
+import { ItemCounter } from '@/features/ui';
 import { CartContext } from '../../context';
 import { ICartProduct } from '../../types';
 import { IOrderItem } from '@/features/order';
@@ -47,9 +47,9 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
                         <Grid item xs={7}>
                             <Box display='flex' flexDirection='column'>
                                 <Typography variant='body1'>{ product.title }</Typography>
-                                {/* <Typography variant='body1'>Talla: <strong>{ product.size }</strong></Typography> */}
+                                <Typography variant='body1'>Talla: <strong>{ product.size }</strong></Typography>
 
-                                {/* {
+                                {
                                     editable 
                                     ? (
                                         <ItemCounter 
@@ -61,7 +61,7 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
                                     : (
                                         <Typography variant='h5'>{ product.quantity } { product.quantity > 1 ? 'productos':'producto' }</Typography>
                                     )
-                                } */}
+                                }
                                 
                             </Box>
                         </Grid>
