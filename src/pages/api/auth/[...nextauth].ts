@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import Credentials from 'next-auth/providers/credentials';
 
 import { dbUsers } from '@/mongodb/database';
 
@@ -10,7 +10,7 @@ export default NextAuth({
     
     // ...add more providers here
 
-    CredentialsProvider({
+    Credentials({
       name: 'Custom Login',
       credentials: {
         email: { label: 'Correo:', type: 'email', placeholder: 'correo@google.com'  },
