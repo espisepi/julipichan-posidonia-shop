@@ -1,4 +1,5 @@
 import {  IUser } from '@/features/user/types/user';
+import { ISize } from '@/features/product';
 
 export interface IOrder {
 
@@ -27,10 +28,12 @@ export interface IOrder {
 export interface IOrderItem {
     _id      : string;
     title    : string;
+    size     : ISize;
     quantity : number;
     slug     : string;
     image    : string;
     price    : number;
+    gender   : string;
 }
 
 
