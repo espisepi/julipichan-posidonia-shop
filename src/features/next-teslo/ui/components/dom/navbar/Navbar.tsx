@@ -28,16 +28,16 @@ export const Navbar = () => {
     return (
         <AppBar>
             <Toolbar>
-                <NextLink href='/' passHref>
+                {/* <NextLink href='/' passHref>
                     <Link display='flex' alignItems='center'>
                         <Typography variant='h6'>Teslo |</Typography>
                         <Typography sx={{ ml: 0.5 }}>Shop</Typography>
                     </Link>  
-                </NextLink>
+                </NextLink> */}
 
                 <Box flex={ 1 } />
 
-                <Box sx={{ display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' } }}
+                {/* <Box sx={{ display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' } }}
                     className="fadeIn">
                     <NextLink href='/category/men' passHref>
                         <Link>
@@ -54,7 +54,7 @@ export const Navbar = () => {
                             <Button color={ asPath === '/category/kid' ? 'primary':'info'}>Niños</Button>
                         </Link>
                     </NextLink>
-                </Box>
+                </Box> */}
 
 
                 <Box flex={ 1 } />
@@ -106,7 +106,7 @@ export const Navbar = () => {
                     <SearchOutlined />
                 </IconButton>
 
-                <NextLink href="/cart" passHref>
+                {/* <NextLink href="/cart" passHref>
                     <Link>
                         <IconButton>
                             <Badge badgeContent={ numberOfItems > 9 ? '+9': numberOfItems  } color="secondary">
@@ -114,7 +114,7 @@ export const Navbar = () => {
                             </Badge>
                         </IconButton>
                     </Link>
-                </NextLink>
+                </NextLink> */}
 
 
                 <Button onClick={ toggleSideMenu }>

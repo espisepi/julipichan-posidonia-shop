@@ -6,7 +6,7 @@ import { HomePage } from "@/features/next-teslo"
 // Dom components go here
 export default function Page(props) {
   return (
-    <HomePage></HomePage>
+    <HomePage />
   )
 }
 
