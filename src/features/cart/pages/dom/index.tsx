@@ -1,4 +1,4 @@
 
 
-export * from './cartPage';
+export * from './cart';
 export * from './empty';

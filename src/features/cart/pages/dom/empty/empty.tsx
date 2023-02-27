@@ -5,7 +5,7 @@ import { Box, Link, Typography } from "@mui/material"
 import { ShopLayout } from '@/components/dom/layouts';
 
 
-const EmptyPage = () => {
+export const EmptyPage = () => {
   return (
     <ShopLayout title="Carrito vacío" pageDescription="No hay artículos en el carrito de compras">
          <Box 
@@ -31,4 +31,5 @@ const EmptyPage = () => {
   )
 }
 
-export default EmptyPage
+// TENER EN CUENTA: EL CODIGO DE ABAJO ES SOLAMENTE PARA CUANDO ESTE EN LA CARPETA DE PAGE GLOBAL DE NEXTJS EN ESTE PROYECTO
+//export default EmptyPage

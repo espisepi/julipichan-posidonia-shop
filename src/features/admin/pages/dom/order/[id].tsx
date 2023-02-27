@@ -13,7 +13,7 @@ interface Props {
     order: IOrder;
 }
 
-const OrderPage: NextPage<Props> = ({ order }) => {
+export const OrderPage: NextPage<Props> = ({ order }) => {
 
 
     const { shippingAddress } = order;
@@ -151,4 +151,4 @@ const OrderPage: NextPage<Props> = ({ order }) => {
 // }
 
 
-export default OrderPage;
+//export default OrderPage;

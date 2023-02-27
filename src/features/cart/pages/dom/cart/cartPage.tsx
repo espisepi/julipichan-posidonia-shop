@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
 
-import { CartContext } from '../../context';
+import { CartContext } from '../../../context';
 import { ShopLayout } from '@/components/dom/layouts';
-import { CartList } from '../../components/dom/CartList';
+import { CartList } from '../../../components/dom/cartList/CartList';
 // import { CartList, OrderSummary } from '../../components/cart';
 import { useRouter } from 'next/router';
 
-const CartPage = () => {
+export const CartPage = () => {
 
     const { isLoaded, cart } = useContext( CartContext );
     const router = useRouter();
@@ -59,4 +59,4 @@ const CartPage = () => {
     )
 }
 
-export default CartPage;
+//export default CartPage;

@@ -1,4 +1,4 @@
-import EmptyPage from "@/features/cart/pages/dom/empty"
+import {EmptyPage} from "@/features/cart"
 
 
 

@@ -1,4 +1,4 @@
-import CartPage from "@/features/cart/pages/dom/cartPage"
+import { CartPage } from "@/features/cart"
 
 
 

@@ -49,7 +49,7 @@ const columns:GridColDef[] = [
 
 
 
-const ProductsPage = () => {
+export const ProductsPage = () => {
 
     const { data, error } = useSWR<IProduct[]>('/api/admin/products');
 
@@ -100,4 +100,4 @@ const ProductsPage = () => {
   )
 }
 
-export default ProductsPage;
+//export default ProductsPage;

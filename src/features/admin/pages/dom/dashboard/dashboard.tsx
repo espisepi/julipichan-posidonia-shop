@@ -7,7 +7,7 @@ import { AdminLayout } from '../../../components';
 import { SummaryTile } from '../../../components';
 import { DashboardSummaryResponse } from '@/features/dashboard';
 
-const DashboardPage = () => {
+export const DashboardPage = () => {
 
     const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
         refreshInterval: 30 * 1000 // 30 segundos
@@ -112,4 +112,4 @@ const DashboardPage = () => {
   )
 }
 
-export default DashboardPage
+//export default DashboardPage

@@ -12,7 +12,7 @@ import { tesloApi } from '@/api';
 
 
 
-const UsersPage = () => {
+export const UsersPage = () => {
 
     const { data, error } = useSWR<IUser[]>('/api/admin/users');
     const [ users, setUsers ] = useState<IUser[]>([]);
@@ -109,4 +109,4 @@ const UsersPage = () => {
   )
 }
 
-export default UsersPage
+//export default UsersPage

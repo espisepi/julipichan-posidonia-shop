@@ -21,7 +21,7 @@ type FormData = {
 };
 
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
 
     const router = useRouter();
     const { registerUser } = useContext( AuthContext );
@@ -163,4 +163,4 @@ const RegisterPage = () => {
 //     }
 // }
 
-export default RegisterPage
+//export default RegisterPage

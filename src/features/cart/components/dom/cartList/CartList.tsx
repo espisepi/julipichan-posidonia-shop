@@ -3,8 +3,8 @@ import NextLink from 'next/link';
 import { Box, Button, CardActionArea, CardMedia, Grid, Link, Typography } from '@mui/material';
 
 import { ItemCounter } from '@/features/ui';
-import { CartContext } from '../../context';
-import { ICartProduct } from '../../types';
+import { CartContext } from '../../../context';
+import { ICartProduct } from '../../../types';
 import { IOrderItem } from '@/features/order';
 
 
