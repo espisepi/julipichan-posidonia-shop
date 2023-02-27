@@ -41,7 +41,7 @@ const productSchema = new Schema<IProduct>({
 productSchema.index({ title: 'text', tags: 'text' });
 
 
-const Product: Model<IProduct> = mongoose.models.Product || model('Product', productSchema );
+const Product: Model<IProduct> = mongoose.models?.Product || model('Product', productSchema );
 
 
 export default Product;
