@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { Link, Box, Button, Card, CardContent, Divider, Grid, Typography, Chip } from '@mui/material';
 
 import { CartContext } from '@/features/cart/context';
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { CartList, OrderSummary } from '@/features/cart';
 
 // import { countries } from '../../utils';

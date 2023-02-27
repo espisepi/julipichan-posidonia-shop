@@ -1,7 +1,7 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import { Typography,Box } from '@mui/material';
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 
 import { ProductList } from '@/features/product/components';
 import { dbProducts } from '@/mongodb/database';

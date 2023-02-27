@@ -4,7 +4,7 @@ import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField
 import Cookies from 'js-cookie';
 import { useForm } from "react-hook-form";
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { countries } from '@/utils';
 import { CartContext } from '@/features/cart/context';
 

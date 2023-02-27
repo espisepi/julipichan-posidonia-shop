@@ -6,7 +6,7 @@ import { Box, Button, Chip, Grid, Typography } from '@mui/material';
 
 import { CartContext } from '@/features/cart';
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { ProductSlideshow, SizeSelector } from '@/features/product';
 import { ItemCounter } from '@/features/ui';
 

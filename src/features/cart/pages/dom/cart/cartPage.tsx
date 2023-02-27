@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
 
 import { CartContext } from '../../../context';
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { CartList } from '../../../components/dom/cartList/CartList';
 import { OrderSummary } from '@/features/order';
 import { useRouter } from 'next/router';

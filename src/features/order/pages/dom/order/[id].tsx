@@ -7,7 +7,7 @@ import { PayPalButtons } from '@paypal/react-paypal-js';
 import { Box, Card, CardContent, Divider, Grid, Typography, Chip, CircularProgress } from '@mui/material';
 import { CreditCardOffOutlined, CreditScoreOutlined } from '@mui/icons-material';
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { CartList } from '@/features/cart';
 import { OrderSummary } from '@/features/cart';
 import { dbOrders } from '@/mongodb/database';

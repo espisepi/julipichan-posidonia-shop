@@ -5,7 +5,7 @@ import { getSession } from 'next-auth/react';
 import { Typography, Grid, Chip, Link } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 import { dbOrders } from '@/mongodb/database';
 import { IOrder } from '@/features/order/types';
 

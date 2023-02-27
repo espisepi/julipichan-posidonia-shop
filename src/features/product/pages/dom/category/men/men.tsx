@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { Typography } from '@mui/material';
 
-import { ShopLayout } from '@/components/dom/layouts';
+import { ShopLayout } from '@/features/global';
 
 import { ProductList } from '@/features/product/components/dom';
 import { useProducts } from '@/features/product/hooks';

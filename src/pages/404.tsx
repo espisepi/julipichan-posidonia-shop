@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { ShopLayout } from "@/components/dom/layouts";
+import { ShopLayout } from '@/features/global';
 
 export default function Error() {
   //return <h1>404 - Something went wrong</h1>
