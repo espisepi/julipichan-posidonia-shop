@@ -23,6 +23,7 @@
     "cloudinary": "^1.28.1",
     "formidable": "^2.0.1",
     "react-slideshow-image": "^3.7.0",
+    "react-hook-form": "^7.27.1",
     "glsl-random": "^0.0.5",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
