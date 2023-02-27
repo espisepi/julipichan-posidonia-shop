@@ -4,7 +4,7 @@ import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/
 import { CartContext } from '../../../context';
 import { ShopLayout } from '@/components/dom/layouts';
 import { CartList } from '../../../components/dom/cartList/CartList';
-// import { CartList, OrderSummary } from '../../components/cart';
+import { OrderSummary } from '@/features/order';
 import { useRouter } from 'next/router';
 
 export const CartPage = () => {
@@ -36,7 +36,7 @@ export const CartPage = () => {
                             <Typography variant='h2'>Orden</Typography>
                             <Divider sx={{ my:1 }} />
 
-                            {/* <OrderSummary /> */}
+                            <OrderSummary />
 
                             <Box sx={{ mt: 3 }}>
                                 <Button 

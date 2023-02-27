@@ -1,4 +1,4 @@
 
 
 export * from './cartList';
-export * from './orderSummary';
+export * from '../../../order/components/dom/orderSummary';
