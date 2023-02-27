@@ -1,4 +1,4 @@
-import {EmptyPage} from "@/features/cart"
+import {EmptyPage} from "@/features/next-teslo"
 
 
 

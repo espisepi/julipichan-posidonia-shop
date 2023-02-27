@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 
-import { db } from '@/mongodb/database';
-import { User } from '@/mongodb/models';
-import { jwt } from '../../../utils';
+import { db } from '@/features/next-teslo';
+import { User } from '@/features/next-teslo';
+import { jwt } from '../../../features/next-teslo/utils';
 
 type Data = 
 | { message: string }

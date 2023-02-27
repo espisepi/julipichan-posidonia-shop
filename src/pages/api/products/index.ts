@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { db, SHOP_CONSTANTS } from '@/mongodb/database'
-import { Product } from '@/mongodb/models';
-import { IProduct } from '@/features/product';
+import { db, SHOP_CONSTANTS } from '@/features/next-teslo'
+import { Product } from '@/features/next-teslo';
+import { IProduct } from '@/features/next-teslo';
 
 type Data = 
 | { message: string }

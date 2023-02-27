@@ -12,12 +12,12 @@ import { SessionProvider } from 'next-auth/react'
 
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { lightTheme } from '../material-ui/themes';
+import { lightTheme } from '../features/next-teslo/material-ui/themes';
 
 
-import { CartProvider } from '@/features/cart'
-import { UiProvider } from '@/features/ui'
-import { AuthProvider } from '@/features/auth'
+import { CartProvider } from '@/features/next-teslo'
+import { UiProvider } from '@/features/next-teslo'
+import { AuthProvider } from '@/features/next-teslo'
 
 const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: true })
 

@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios';
-import { IPaypal } from '@/features/paypal';
-import { db } from '@/mongodb/database';
-import { Order } from '@/mongodb/models';
+import { IPaypal } from '@/features/next-teslo';
+import { db } from '@/features/next-teslo';
+import { Order } from '@/features/next-teslo';
 
 
 

@@ -1,4 +1,4 @@
-import { CartPage } from "@/features/cart"
+import { CartPage } from "@/features/next-teslo"
 
 
 

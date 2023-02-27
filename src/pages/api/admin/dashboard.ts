@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { db } from '@/mongodb/database'
-import { Order, Product, User } from '@/mongodb/models';
+import { db } from '@/features/next-teslo'
+import { Order, Product, User } from '@/features/next-teslo';
 
 type Data = {
     numberOfOrders: number;

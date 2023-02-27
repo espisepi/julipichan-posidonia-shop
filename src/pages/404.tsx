@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { ShopLayout } from '@/features/global';
+import { ShopLayout } from '@/features/next-teslo';
 
 export default function Error() {
   //return <h1>404 - Something went wrong</h1>

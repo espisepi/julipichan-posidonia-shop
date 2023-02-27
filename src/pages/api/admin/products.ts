@@ -4,9 +4,9 @@ import { isValidObjectId } from 'mongoose';
 import { v2 as cloudinary } from 'cloudinary';
 cloudinary.config( process.env.CLOUDINARY_URL || '' );
 
-import { db } from '@/mongodb/database';
-import { Product } from '@/mongodb/models';
-import { IProduct } from '@/features/product';
+import { db } from '@/features/next-teslo';
+import { Product } from '@/features/next-teslo';
+import { IProduct } from '@/features/next-teslo';
 
 type Data = 
 | { message: string }

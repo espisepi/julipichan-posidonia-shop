@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { isValidObjectId } from 'mongoose';
-import { db } from '@/mongodb/database';
-import { IUser } from '@/features/user';
-import { User } from '@/mongodb/models';
+import { db } from '@/features/next-teslo';
+import { IUser } from '@/features/next-teslo';
+import { User } from '@/features/next-teslo';
 
 type Data = 
 | { message: string }
