@@ -12,7 +12,7 @@ import { CartList, OrderSummary } from '@/features/next-teslo';
 // import { countries } from '../../utils';
 
 
-const SummaryPage = () => {
+export const SummaryPage = () => {
 
     const router = useRouter();
     const { shippingAddress, numberOfItems, createOrder } = useContext( CartContext );
@@ -124,4 +124,4 @@ const SummaryPage = () => {
   )
 }
 
-export default SummaryPage;
+//export default SummaryPage;

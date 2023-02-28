@@ -50,7 +50,7 @@ interface Props {
     orders: IOrder[]
 }
 
-const HistoryPage: NextPage<Props> = ({ orders }) => {
+export const HistoryPage: NextPage<Props> = ({ orders }) => {
 
     // const rows = ..  
     // { id: indice + 1, paid: true, fullname: 'Fernando Herrera', orderId: 1283781237123 }

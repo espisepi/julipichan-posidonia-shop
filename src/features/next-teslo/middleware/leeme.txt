@@ -1,0 +1,7 @@
+
+
+Esta carpeta existe para almacenar todos los middleware de next-teslo
+
+ya que ha dejado de funcionar los middleware dentro de las carpetas de pages
+
+De esta carpeta no se llama en ningún lado, simplemente es para consultar el codigo
