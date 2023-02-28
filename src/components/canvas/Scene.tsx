@@ -25,7 +25,7 @@ export default function Scene({ children, ...props }) {
 
       {children}
       <Preload all />
-      <OrbitControls  maxPolarAngle={Math.PI / 2 } maxDistance={2500} />
+      {/* <OrbitControls  maxPolarAngle={Math.PI / 2 } maxDistance={2500} /> */}
     </Canvas>
   )
 }
