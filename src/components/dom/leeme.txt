@@ -1,0 +1,4 @@
+
+
+
+NO TOCAR Layout.tsx porque sin ese componente no funciona r3f xD (ese componente se utiliza en _app.tsx)
