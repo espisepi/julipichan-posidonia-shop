@@ -6,7 +6,7 @@ import BackgroundEquirectangular from './BackgroundEquirectangular'
 export default function Scene({ children, ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
   return (
-    <Canvas {...props} camera={{far:300000}} style={{height:'100vh',width:'100vw'}}>
+    <Canvas {...props} camera={{far:300000}} style={{height:'100vh',width:'100vw', position:'fixed', top:0, zIndex:-10}}>
 
       <directionalLight intensity={0.75} />
       <ambientLight intensity={0.75} />
