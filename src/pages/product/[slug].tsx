@@ -1,9 +1,13 @@
 import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import dynamic from 'next/dynamic';
+
 
 import { dbProducts } from '@/features/next-teslo';
 import { IProduct } from '@/features/next-teslo';
 
 import { ProductPage as ProductPageTeslo } from '@/features/next-teslo';
+
+const Welcome = dynamic(() => import('@/components/canvas/Welcome'), { ssr: false })
 
 
 interface Props {
@@ -18,6 +22,9 @@ const ProductPage:NextPage<Props> = ({ product }) => {
     <ProductPageTeslo product={product} />
   )
 }
+
+// @ts-ignore
+ProductPage.canvas = (props) => <Welcome route='/' />
 
 
 // getServerSideProps 
