@@ -29,8 +29,8 @@ export const ProductCard: FC<Props> = ({ product }) => {
       >
           <Card>
             {/* <h1>OYE</h1> */}
-              <NextLink href={`/product/${ product.slug }`} passHref prefetch={ false }>
-                <Link>
+              {/* <NextLink href={`/product/${ product.slug }`} passHref prefetch={ false }> */}
+                <Link href={`/product/${ product.slug }`} component={NextLink}>
 
                     <CardActionArea>
 
@@ -54,7 +54,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
                     </CardActionArea>
                 </Link>
-              </NextLink>
+              {/* </NextLink> */}
               
           </Card>
 
