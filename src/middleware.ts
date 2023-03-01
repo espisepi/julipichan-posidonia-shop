@@ -7,7 +7,7 @@ import { getToken } from 'next-auth/jwt';
 // Pero se ve que no deja ya hacer la build con ese fichero ahi :(
 export async function middleware( req: NextRequest | any, ev: NextFetchEvent ) {
 
-    // const session: any = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    const session: any = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
     // if ( !session ) {
     //     return new Response( JSON.stringify({ message: 'No autorizado' }), {
@@ -26,6 +26,28 @@ export async function middleware( req: NextRequest | any, ev: NextFetchEvent ) {
     //             'Content-Type':'application/json'
     //         }
     //     });
+    // }
+
+    // ==================== ADMIN MIDDLEWARE ===============================
+    // if (req.nextUrl.pathname.startsWith('/admin')) {
+    //     if ( !session ) {
+    //         const requestedPage = req.page.name;
+    //         return NextResponse.redirect(`/auth/login?p=${ requestedPage }`);
+    //     }
+
+    //     const validRoles = ['admin','super-user','SEO'];
+
+    //     if ( !validRoles.includes( session.user.role ) ) {
+    //         return NextResponse.redirect('/');
+    //     }
+    // }
+
+    // ==================== CHECKOUT MIDDLEWARE ===============================
+    // if (req.nextUrl.pathname.startsWith('/checkout')) {
+    //     if ( !session ) {
+    //         const requestedPage = req.page.name;
+    //         return NextResponse.redirect(`/auth/login?p=${ requestedPage }`);
+    //     }
     // }
 
 
