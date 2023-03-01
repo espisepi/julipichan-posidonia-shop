@@ -9,6 +9,28 @@ import { ClearOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-
 import { CartContext } from '@/features/next-teslo';
 import { UiContext } from '@/features/next-teslo';
 
+/**
+ * 
+ *  IMPORTANTE:
+ * 
+ *  Para corregir los errores de renderizado con nextjs 13, se ha modificado los links
+ *  gracias a la solucion ofrecida en este enlace: https://stackoverflow.com/questions/66226576/using-the-material-ui-link-component-with-the-next-js-link-component/74419666#74419666
+ * 
+ * Antes Nextjs 12:
+ * 
+ * <NextLink href="/" passHref>
+    <Link variant="body2">Your Link</Link>
+   </NextLink>
+ * 
+   Ahora Nextjs 13:
+
+   <Link href="/" component={NextLink}>
+        Your link
+   </Link>
+ * 
+ */
+
+
 export const Navbar = () => {
 
     const { asPath, push } = useRouter();
@@ -28,33 +50,25 @@ export const Navbar = () => {
     return (
         <AppBar>
             <Toolbar>
-                {/* <NextLink href='/' passHref>
-                    <Link display='flex' alignItems='center'>
+                    <Link href="/" component={NextLink} display='flex' alignItems='center'>
                         <Typography variant='h6'>Teslo |</Typography>
                         <Typography sx={{ ml: 0.5 }}>Shop</Typography>
                     </Link>  
-                </NextLink> */}
 
                 <Box flex={ 1 } />
 
-                {/* <Box sx={{ display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' } }}
+                <Box sx={{ display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' } }}
                     className="fadeIn">
-                    <NextLink href='/category/men' passHref>
-                        <Link>
+                        <Link href='/category/men'  component={NextLink}>
                             <Button color={ asPath === '/category/men' ? 'primary':'info'}>Hombres</Button>
                         </Link>
-                    </NextLink>
-                    <NextLink href='/category/women' passHref>
-                        <Link>
+                        <Link href='/category/women' component={NextLink}>
                             <Button color={ asPath === '/category/women' ? 'primary':'info'}>Mujeres</Button>
                         </Link>
-                    </NextLink>
-                    <NextLink href='/category/kid' passHref>
-                        <Link>
+                        <Link href='/category/kid' component={NextLink}>
                             <Button color={ asPath === '/category/kid' ? 'primary':'info'}>Niños</Button>
                         </Link>
-                    </NextLink>
-                </Box> */}
+                </Box>
 
 
                 <Box flex={ 1 } />
