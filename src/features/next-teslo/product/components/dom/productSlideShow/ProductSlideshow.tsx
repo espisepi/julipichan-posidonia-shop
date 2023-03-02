@@ -19,6 +19,7 @@ export const ProductSlideshow: FC<Props> = ({ images }) => {
             images.map( image =>  {
                 // En produccion aparece el error de que la imagen del producto tiene esta url: ...sv.ondigitalocean.app/product/products/1740507-00-A_1.jpg
                 // Con la siguiente linea el resultado deberia ser:  ...sv.ondigitalocean.app/products/1740507-00-A_1.jpg
+                image = image.includes('http') ? image : `${ process.env.HOST_NAME}products/${ image }`
                 image = image.includes("/product/") ? image.replace("/product/","/") : image;
                 return (
                     <div className={ styles['each-slide'] } key={ image }>
