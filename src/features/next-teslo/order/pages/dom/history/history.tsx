@@ -35,11 +35,12 @@ export const columns: GridColDef[] = [
         sortable: false,
         renderCell: (params: GridValueGetterParams) => {
             return (
-               <NextLink href={`/orders/${ params.row.orderId }`} passHref>
-                    <Link underline='always'>
+                    <Link
+                    href={`/orders/${ params.row.orderId }`}
+                    component={NextLink}
+                    underline='always'>
                         Ver orden
                     </Link>
-               </NextLink>
             )
         }
     }

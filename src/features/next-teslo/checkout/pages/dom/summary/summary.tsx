@@ -66,11 +66,12 @@ export const SummaryPage = () => {
 
                         <Box display='flex' justifyContent='space-between'>
                             <Typography variant='subtitle1'>Dirección de entrega</Typography>
-                            <NextLink href='/checkout/address' passHref>
-                                <Link underline='always'>
+                                <Link 
+                                href='/checkout/address'
+                                component={NextLink}
+                                underline='always'>
                                     Editar
                                 </Link>
-                            </NextLink>
                         </Box>
 
                         
@@ -84,11 +85,12 @@ export const SummaryPage = () => {
                         <Divider sx={{ my:1 }} />
 
                         <Box display='flex' justifyContent='end'>
-                            <NextLink href='/cart' passHref>
-                                <Link underline='always'>
+                                <Link
+                                href='/cart'
+                                component={NextLink}
+                                underline='always'>
                                     Editar
                                 </Link>
-                            </NextLink>
                         </Box>
 
                         <OrderSummary />

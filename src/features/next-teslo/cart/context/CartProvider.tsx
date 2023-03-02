@@ -8,7 +8,6 @@ import { tesloApi } from '@/features/next-teslo';
 import { ICartProduct} from '../types';
 import { IOrder, ShippingAddress } from '@/features/next-teslo';
 
-
 export interface CartState {
     isLoaded: boolean;
     cart: ICartProduct[];
@@ -33,7 +32,7 @@ const CART_INITIAL_STATE: CartState = {
 }
 
 interface Props {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 export const CartProvider:FC<Props> = ({ children }) => {
@@ -104,12 +103,9 @@ export const CartProvider:FC<Props> = ({ children }) => {
         // dispatch({ type: '[Cart] - Add Product', payload: [...productsInCart, product] })
 
         //! Nivel Final
-
-        // Si no esta el producto en el carrito, lo anadimos
         const productInCart = state.cart.some( p => p._id === product._id );
         if ( !productInCart ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ] })
 
-        // Lo comentamos (por ahora no lo comentamos) porque no tenemos productos con size en este proyecto
         const productInCartButDifferentSize = state.cart.some( p => p._id === product._id && p.size === product.size );
         if ( !productInCartButDifferentSize ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ] })
 

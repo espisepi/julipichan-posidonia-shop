@@ -31,11 +31,9 @@ const columns:GridColDef[] = [
         width: 250,
         renderCell: ({row}: GridValueGetterParams) => {
             return (
-                <NextLink href={`/admin/products/${ row.slug }`} passHref>
-                    <Link underline='always'>
+                    <Link href={`/admin/products/${ row.slug }`} component={NextLink} underline='always'>
                         { row.title}
                     </Link>
-                </NextLink>
             )
         }
     },
