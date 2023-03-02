@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Header from '@/config'
 import Layout from '@/components/dom/Layout'
 import '@/styles/index.css'
+import '@/styles/globals.css'
 
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { SWRConfig } from 'swr';

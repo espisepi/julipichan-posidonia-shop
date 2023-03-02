@@ -5,6 +5,7 @@ import { ICartProduct } from '../types';
 import { ShippingAddress } from '@/features/next-teslo';
 
 
+
 type CartActionType = 
    | { type: '[Cart] - LoadCart from cookies | storage', payload: ICartProduct[] } 
    | { type: '[Cart] - Update products in cart', payload: ICartProduct[] }
@@ -55,7 +56,7 @@ export const cartReducer = ( state: CartState, action: CartActionType ): CartSta
       case '[Cart] - Remove product in cart':
          return {
             ...state,
-            cart: state.cart.filter( product => !( product._id === action.payload._id ))
+            cart: state.cart.filter( product => !(product._id === action.payload._id && product.size === action.payload.size ))
          }
 
       case '[Cart] - Update order summary':
