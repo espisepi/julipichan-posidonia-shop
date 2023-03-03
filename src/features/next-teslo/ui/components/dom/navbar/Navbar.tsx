@@ -9,6 +9,9 @@ import { ClearOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-
 import { CartContext } from '@/features/next-teslo';
 import { UiContext } from '@/features/next-teslo';
 
+import styles from './Navbar.module.css';
+
+
 /**
  * 
  *  IMPORTANTE:
@@ -49,6 +52,7 @@ export const Navbar = () => {
 
     return (
         <AppBar>
+            <div className={ styles['navbar-bg-color'] }>
             <Toolbar>
                     <Link href="/" component={NextLink} display='flex' alignItems='center'>
                         <Typography variant='h6'>Teslo |</Typography>
@@ -136,6 +140,7 @@ export const Navbar = () => {
                 </Button>
 
             </Toolbar>
+            </div>
         </AppBar>
     )
 }

@@ -1,0 +1,12 @@
+
+
+
+.navbar-bg-color {
+    background-color: #909090;
+    transition: background-color 0.5s;
+}
+
+.navbar-bg-color:hover {
+    background-color: #F0F0F0;
+}
+
