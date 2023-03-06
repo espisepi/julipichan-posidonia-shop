@@ -3,38 +3,37 @@ import { Slide } from 'react-slideshow-image';
 
 import 'react-slideshow-image/dist/styles.css';
 import styles from './ProductSlideshow.module.css';
+import { fixUrlImages } from '@/features/next-teslo/utils/images';
 
 interface Props {
-    images: string[]
+    images: Array<string>;
 }
 
 export const ProductSlideshow: FC<Props> = ({ images }) => {
     
-    images = images.map( image => (
-        image.includes('http') ? image : `/${image}`
-    ));
+    images = fixUrlImages(images) as Array<string>;
 
-  return (
-    <Slide
-        easing="ease"
-        duration={ 7000 }
-        indicators
-    >
-        {
-            images.map( image =>  {
-                return (
-                    <div className={ styles['each-slide'] } key={ image }>
-                        <div style={{
-                            backgroundImage: `url(${ image })`,
-                            backgroundSize: 'cover'
-                        }}>
+    return (
+        <Slide
+            easing="ease"
+            duration={ 7000 }
+            indicators
+        >
+            {
+                images.map( image =>  {
+                    return (
+                        <div className={ styles['each-slide'] } key={ image }>
+                            <div style={{
+                                backgroundImage: `url(${ image })`,
+                                backgroundSize: 'cover'
+                            }}>
+                            </div>
                         </div>
-                    </div>
-                )
+                    )
 
-            })
-        }
+                })
+            }
 
-    </Slide>
-  )
+        </Slide>
+    )
 }

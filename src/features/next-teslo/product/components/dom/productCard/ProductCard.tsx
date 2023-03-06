@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import { Grid, Card, CardActionArea, CardMedia, Box, Typography, Link, Chip } from '@mui/material'
 
 import { IProduct } from '../../../types';
+import { fixUrlImage } from '@/features/next-teslo/utils/images';
 
 interface Props {
     product: IProduct;
@@ -45,7 +46,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                         <CardMedia 
                             component='img'
                             className='fadeIn'
-                            image={ productImage }
+                            image={ fixUrlImage(productImage) as string }
                             alt={ product.title }
                             onLoad={ () => setIsImageLoaded(true) }
                         />

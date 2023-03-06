@@ -11,6 +11,7 @@ import { IProduct } from '@/features/next-teslo';
 import { dbProducts } from '@/features/next-teslo';
 import { tesloApi } from '@/features/next-teslo';
 import { Product } from '@/features/next-teslo';
+import { fixUrlImage } from '@/features/next-teslo/utils/images';
 
 
 const validTypes  = ['shirts','pants','hoodies','hats']
@@ -376,7 +377,7 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
                                                 <CardMedia 
                                                     component='img'
                                                     className='fadeIn'
-                                                    image={ img }
+                                                    image={ fixUrlImage(img) as string }
                                                     alt={ img }
                                                 />
                                                 <CardActions>

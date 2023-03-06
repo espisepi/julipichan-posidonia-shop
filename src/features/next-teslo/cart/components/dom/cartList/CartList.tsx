@@ -6,6 +6,7 @@ import { ItemCounter } from '@/features/next-teslo';
 import { CartContext } from '../../../context';
 import { ICartProduct } from '../../../types';
 import { IOrderItem } from '@/features/next-teslo';
+import { fixUrlImage } from '@/features/next-teslo/utils/images';
 
 
 interface Props {
@@ -38,7 +39,7 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
                                 >
                                     <CardActionArea>
                                         <CardMedia 
-                                            image={ product.image }
+                                            image={ fixUrlImage(product.image) as string }
                                             component='img'
                                             sx={{ borderRadius: '5px' }}
                                         />

@@ -6,6 +6,7 @@ import useSWR from 'swr';
 
 import { AdminLayout } from '../../../components';
 import { IProduct } from '@/features/next-teslo';
+import { fixUrlImage } from '@/features/next-teslo/utils/images';
 
 
 const columns:GridColDef[] = [
@@ -19,7 +20,7 @@ const columns:GridColDef[] = [
                         component='img'
                         alt={ row.title }
                         className='fadeIn'
-                        image={ row.img }
+                        image={ fixUrlImage(row.img) as string }
                     />
                 </a>
             )
