@@ -41,7 +41,7 @@ export default function ProductScene ({ image, ...props }) {
   useCursor(hovered)
 
   const { nodes, materials } = useGLTF('/models/next-teslo/sphere-tshirt/scene.glb', true) as unknown as GLTFResult;
-
+  console.log(image)
   const [texture_shirt, texture_cemento_normal, texture_cemento_displacement] = useLoader(THREE.TextureLoader, [ 
                                         `${image}`,
                                         '/img/textures/cemento/cemento_normal.jpg',
