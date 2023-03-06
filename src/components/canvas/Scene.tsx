@@ -8,8 +8,8 @@ export default function Scene({ children, ...props }) {
   return (
     <Canvas {...props} camera={{far:300000}} style={{height:'100vh',width:'100vw', position:'fixed', top:0, zIndex:-10}}>
 
-      <directionalLight intensity={0.75} />
-      <ambientLight intensity={0.75} />
+      {/* <directionalLight intensity={0.75} /> */}
+      <ambientLight intensity={0.1} />
 
       {/* <Sky
         distance={3000}

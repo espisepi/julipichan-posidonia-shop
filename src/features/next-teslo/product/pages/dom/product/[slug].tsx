@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { Box, Button, Chip, Grid, Typography } from '@mui/material';
 
-import { CartContext } from '@/features/next-teslo';
+import { CartContext, UiContext } from '@/features/next-teslo';
 
 import { ShopLayout } from '@/features/next-teslo';
 import { ProductSlideshow, SizeSelector } from '@/features/next-teslo';
@@ -59,11 +59,14 @@ export const ProductPage:NextPage<Props> = ({ product }) => {
     router.push('/cart');
   }
 
+  // Mostrar / NO Mostrar Elementos dom para poder jugar con el 3D libremente
+  const { is3DModeActivated } = useContext( UiContext );
+
 
   return (
     <ShopLayout title={ product.title } pageDescription={ product.description }>
     
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{visibility: is3DModeActivated ? 'hidden' : 'visible' }}>
 
         <Grid item xs={12} sm={ 7 }>
           <ProductSlideshow 
@@ -121,7 +124,7 @@ export const ProductPage:NextPage<Props> = ({ product }) => {
             <Box sx={{ mt:3 }}>
               <Typography variant='subtitle2'>Descripción</Typography>
               <Typography variant='body2'>{ product.description }</Typography>
-            </Box>
+            </Box> 
 
           </Box>
         </Grid>

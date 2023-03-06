@@ -9,6 +9,7 @@ import { ProductPage as ProductPageTeslo } from '@/features/next-teslo';
 
 const Welcome = dynamic(() => import('@/components/canvas/Welcome'), { ssr: false })
 
+const ProductScene = dynamic(() => import('@/features/next-teslo/product/components/canvas/product-scene/ProductScene'), { ssr: false })
 
 interface Props {
   product: IProduct
@@ -24,7 +25,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 }
 
 // @ts-ignore
-ProductPage.canvas = (props) => <Welcome route='/' />
+ProductPage.canvas = ({ product }) => < ProductScene image={ product.images[0] } />
 
 
 // getServerSideProps 

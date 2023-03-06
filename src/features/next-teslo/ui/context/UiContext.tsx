@@ -5,9 +5,11 @@ import { createContext } from 'react';
 
 interface ContextProps {
     isMenuOpen: boolean;
+    is3DModeActivated: boolean;
 
     // Methods
     toggleSideMenu: () => void;
+    toggle3DMode: () => void;
 }
 
 
