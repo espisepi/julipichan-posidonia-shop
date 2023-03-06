@@ -37,6 +37,8 @@ type GLTFResult = GLTF & {
 
 export default function ProductScene ({ image, ...props }) {
 
+  image = image.includes('http') ? image : `/${image}`
+
   const [hovered, hover] = useState(false)
   useCursor(hovered)
 
