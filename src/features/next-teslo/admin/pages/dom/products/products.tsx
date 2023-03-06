@@ -47,11 +47,12 @@ const columns:GridColDef[] = [
 
 
 
-export const ProductsPage = () => {
+export const ProductsPageAdmin = () => {
 
     const { data, error } = useSWR<IProduct[]>('/api/admin/products');
 
-    if ( !data && !error ) return (<></>);
+    if ( !data && !error ) return (<><h1>Productos vacios</h1></>);
+
     
     const rows = data!.map( product => ({
         id: product._id,
