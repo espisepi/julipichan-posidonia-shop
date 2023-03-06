@@ -7,9 +7,9 @@ import { IProduct } from '@/features/next-teslo';
 
 import { ProductPage as ProductPageTeslo } from '@/features/next-teslo';
 
-const Welcome = dynamic(() => import('@/components/canvas/Welcome'), { ssr: false })
-
-const ProductScene = dynamic(() => import('@/features/next-teslo/product/components/canvas/product-scene/ProductScene'), { ssr: false })
+//const Welcome = dynamic(() => import('@/components/canvas/Welcome'), { ssr: false })
+//const ProductScene = dynamic(() => import('@/features/next-teslo/product/components/canvas/product-scene/ProductScene'), { ssr: false })
+const ProductPageCanvas = dynamic(() => import('@/features/next-teslo/product/pages/canvas/product/productPageCanvas'), { ssr: false })
 
 interface Props {
   product: IProduct
@@ -25,7 +25,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 }
 
 // @ts-ignore
-ProductPage.canvas = ({ product }) => < ProductScene image={ product.images[0] } />
+ProductPage.canvas = ({ product }) => < ProductPageCanvas product={ product } />
 
 
 // getServerSideProps 
