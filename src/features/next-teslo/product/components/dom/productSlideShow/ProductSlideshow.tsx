@@ -9,6 +9,11 @@ interface Props {
 }
 
 export const ProductSlideshow: FC<Props> = ({ images }) => {
+    
+    images = images.map( image => (
+        image.includes('http') ? image : `/${image}`
+    ));
+
   return (
     <Slide
         easing="ease"
