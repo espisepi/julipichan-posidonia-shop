@@ -42,7 +42,7 @@ const columns:GridColDef[] = [
 
 
 
-export const OrdersPage = () => {
+export const OrdersPageAdmin = () => {
 
     const { data, error } = useSWR<IOrder[]>('/api/admin/orders');
 

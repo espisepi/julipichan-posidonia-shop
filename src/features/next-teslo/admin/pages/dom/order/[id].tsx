@@ -13,7 +13,7 @@ interface Props {
     order: IOrder;
 }
 
-export const OrderPage: NextPage<Props> = ({ order }) => {
+export const OrderPageAdmin: NextPage<Props> = ({ order }) => {
 
 
     const { shippingAddress } = order;

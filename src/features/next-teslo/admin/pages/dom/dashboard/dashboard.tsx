@@ -7,7 +7,7 @@ import { AdminLayout } from '../../../components';
 import { SummaryTile } from '../../../components';
 import { DashboardSummaryResponse } from '@/features/next-teslo';
 
-export const DashboardPage = () => {
+export const DashboardPageAdmin = () => {
 
     const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
         refreshInterval: 30 * 1000 // 30 segundos

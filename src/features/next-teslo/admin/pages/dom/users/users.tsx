@@ -12,7 +12,7 @@ import { tesloApi } from '@/features/next-teslo';
 
 
 
-export const UsersPage = () => {
+export const UsersPageAdmin = () => {
 
     const { data, error } = useSWR<IUser[]>('/api/admin/users');
     const [ users, setUsers ] = useState<IUser[]>([]);

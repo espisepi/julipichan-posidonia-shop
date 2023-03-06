@@ -37,7 +37,7 @@ interface Props {
     product: IProduct;
 }
 
-export const ProductAdminPage:FC<Props> = ({ product }) => {
+export const ProductPageAdmin:FC<Props> = ({ product }) => {
 
     const router = useRouter();
     const fileInputRef = useRef<HTMLInputElement>(null)
