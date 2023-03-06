@@ -29,18 +29,28 @@ export async function middleware( req: NextRequest | any, ev: NextFetchEvent ) {
     // }
 
     // ==================== ADMIN MIDDLEWARE ===============================
-    // if (req.nextUrl.pathname.startsWith('/admin')) {
-    //     if ( !session ) {
-    //         const requestedPage = req.page.name;
-    //         return NextResponse.redirect(`/auth/login?p=${ requestedPage }`);
-    //     }
+    if (req.nextUrl.pathname.startsWith('/admin')) {
+        if ( !session ) {
+            const url = req.nextUrl.clone();
+            const pathnameRedirect = url.pathname;
+            url.pathname = `/auth/login`;
+            url.searchParams.append('p', pathnameRedirect);
+            // console.log(url.toString())
+            return NextResponse.redirect(url);
+        }
 
-    //     const validRoles = ['admin','super-user','SEO'];
+        // const validRoles = ['admin','super-user','SEO'];
 
-    //     if ( !validRoles.includes( session.user.role ) ) {
-    //         return NextResponse.redirect('/');
-    //     }
-    // }
+        // if ( !validRoles.includes( session.user.role ) ) {
+        //     const url = req.nextUrl.clone();
+        //     url.pathname = '/'
+        //     return NextResponse.rewrite(url)
+        // }
+
+        // if (req.nextUrl.pathname.startsWith('/about')) {
+        //     return NextResponse.rewrite(new URL('/about-2', req.url))
+        // }
+    }
 
     // ==================== CHECKOUT MIDDLEWARE ===============================
     // if (req.nextUrl.pathname.startsWith('/checkout')) {
