@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { Navbar, SideMenu, UiContext } from '@/features/next-teslo';
 import { Button } from '@mui/material';
+import { ButtonEnabled3d } from '@/features/next-teslo/ui/components/dom/buttonEnabled3d';
 
 
 interface Props {
@@ -13,8 +14,7 @@ interface Props {
 }
 
 export const ShopLayout:FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
-    // Poner aqui salir modo 3d
-    const { is3DModeActivated, toggle3DMode } = useContext(UiContext);
+
   return (
     <>
         <Head>
@@ -51,16 +51,7 @@ export const ShopLayout:FC<Props> = ({ children, title, pageDescription, imageFu
         {/* Footer */}
         <footer>
             {/* TODO: mi custom footer */}
-                <div style={{position:'fixed', bottom: 0}}>
-                 <Button 
-                    color="secondary" 
-                    className='circular-btn'
-                    onClick={ toggle3DMode }
-                  >
-                    { is3DModeActivated ? 'Salir del modo 3D' : 'Entrar al modo 3D' }
-                  </Button>
-
-                </div>
+            <ButtonEnabled3d />
         </footer>
 
     </>
