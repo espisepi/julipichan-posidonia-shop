@@ -16,7 +16,7 @@ import { Button, Grid, Typography } from '@mui/material'
 import { AdminLayout } from '../../../../admin/components'
 import { SummaryTile } from '../../../../admin/components'
 // import { DashboardSummaryResponse } from '@/features/next-teslo'
-import { useDashboard } from '../../../api/get-dashboard'
+import { useDashboard } from '../../../hooks'
 
 export const DashboardPageAdmin = () => {
   // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
