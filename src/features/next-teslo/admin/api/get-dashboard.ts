@@ -26,14 +26,12 @@ type UseDashboardProps = {
   useQueryOptions: UseQueryOptions<DashboardSummaryResponse>
 };
 
-type UseDashboardResponse = {
-    data: DashboardSummaryResponse | undefined,
-    error: unknown,
-    isLoading: boolean
-}
 
-export const useDashboard = ({ useQueryOptions }: UseDashboardProps): UseDashboardResponse  => {
-  const { data, error, isFetching, isFetched } = useQuery<DashboardSummaryResponse>({
+// DOCUMENTATION useQuery
+//https://tanstack.com/query/v4/docs/react/reference/useQuery
+
+export const useDashboard = ({ useQueryOptions }: UseDashboardProps) => {
+  const { data, error, isFetching, isFetched, ...params } = useQuery<DashboardSummaryResponse>({
     queryKey: ['dashboard'],
     queryFn: () => getDashboard(),
     enabled: true,
@@ -45,5 +43,6 @@ export const useDashboard = ({ useQueryOptions }: UseDashboardProps): UseDashboa
     data,
     error,
     isLoading: isFetching && !isFetched,
+    ...params,
   };
 };
