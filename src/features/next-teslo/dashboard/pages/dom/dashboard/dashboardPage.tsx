@@ -1,63 +1,71 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 // import useSWR from 'swr';
-import { AttachMoneyOutlined, CreditCardOffOutlined, CreditCardOutlined, DashboardOutlined, GroupOutlined, CategoryOutlined, CancelPresentationOutlined, ProductionQuantityLimitsOutlined, AccessTimeOutlined } from '@mui/icons-material';
+import {
+  AttachMoneyOutlined,
+  CreditCardOffOutlined,
+  CreditCardOutlined,
+  DashboardOutlined,
+  GroupOutlined,
+  CategoryOutlined,
+  CancelPresentationOutlined,
+  ProductionQuantityLimitsOutlined,
+  AccessTimeOutlined,
+} from '@mui/icons-material'
 import { Button, Grid, Typography } from '@mui/material'
 
-import { AdminLayout } from '../../../components';
-import { SummaryTile } from '../../../components';
-import { DashboardSummaryResponse } from '@/features/next-teslo';
-import { useDashboard } from '../../../api/get-dashboard';
+import { AdminLayout } from '../../../../admin/components'
+import { SummaryTile } from '../../../../admin/components'
+// import { DashboardSummaryResponse } from '@/features/next-teslo'
+import { useDashboard } from '../../../api/get-dashboard'
 
 export const DashboardPageAdmin = () => {
+  // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
+  //     refreshInterval: 30 * 1000 // 30 segundos
+  // });
 
-    // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
-    //     refreshInterval: 30 * 1000 // 30 segundos
-    // });
+  const { data, error, isLoading, refetch } = useDashboard({
+    useQueryOptions: {
+      refetchInterval: 30 * 1000, // 30 Segundos
+    },
+  })
 
-    const { data, error, isLoading, refetch } = useDashboard({
-      useQueryOptions: {
-        refetchInterval: 30 * 1000, // 30 Segundos
-      },
-    })
+  const [refreshIn, setRefreshIn] = useState(30)
 
-    const [refreshIn, setRefreshIn] = useState(30);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log('Tick')
+      setRefreshIn((refreshIn) => (refreshIn > 0 ? refreshIn - 1 : 30))
+    }, 1000)
 
-    useEffect(() => {
-      const interval = setInterval(()=>{
-        console.log('Tick');
-        setRefreshIn( refreshIn => refreshIn > 0 ? refreshIn - 1: 30 );
-      }, 1000 );
-    
-      return () => clearInterval(interval)
-    }, []);
-    
+    return () => clearInterval(interval)
+  }, [])
 
+  // if ( !error && !data ) {
+  //     return <></>
+  // }
 
+  if (isLoading) {
+    return (
+      <>
+        <h4>Carganado los datos</h4>
+      </>
+    )
+  }
 
-    // if ( !error && !data ) {
-    //     return <></>
-    // }
+  if (error) {
+    console.log(error)
+    return <Typography>Error al cargar la información</Typography>
+  }
 
-    if (isLoading) {
-      return <><h4>Carganado los datos</h4></>;
-    }
-
-    if ( error ){
-        console.log(error);
-        return <Typography>Error al cargar la información</Typography>
-    }
-
-
-    const {
-        numberOfOrders,
-        paidOrders,
-        numberOfClients,
-        numberOfProducts,
-        productsWithNoInventory,
-        lowInventory,
-        notPaidOrders,
-    } = data!;
-
+  const {
+    numberOfOrders,
+    paidOrders,
+    numberOfClients,
+    numberOfProducts,
+    productsWithNoInventory,
+    lowInventory,
+    notPaidOrders,
+  } = data!
 
   return (
     <AdminLayout title='Dashboard' subTitle='Estadisticas generales' icon={<DashboardOutlined />}>
@@ -110,7 +118,9 @@ export const DashboardPageAdmin = () => {
           icon={<AccessTimeOutlined color='secondary' sx={{ fontSize: 40 }} />}
         />
 
-        <Button onClick={()=>refetch()} color={ 'primary' }>Actualizar manualmente</Button>
+        <Button onClick={() => refetch()} color={'primary'}>
+          Actualizar manualmente
+        </Button>
       </Grid>
     </AdminLayout>
   )
