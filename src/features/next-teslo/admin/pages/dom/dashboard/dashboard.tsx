@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react';
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import { AttachMoneyOutlined, CreditCardOffOutlined, CreditCardOutlined, DashboardOutlined, GroupOutlined, CategoryOutlined, CancelPresentationOutlined, ProductionQuantityLimitsOutlined, AccessTimeOutlined } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material'
 
 import { AdminLayout } from '../../../components';
 import { SummaryTile } from '../../../components';
 import { DashboardSummaryResponse } from '@/features/next-teslo';
+import { useDashboard } from '../../../api/get-dashboard';
 
 export const DashboardPageAdmin = () => {
 
-    const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
-        refreshInterval: 30 * 1000 // 30 segundos
+    // const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
+    //     refreshInterval: 30 * 1000 // 30 segundos
+    // });
+
+    const { data, error, isLoading } = useDashboard({
+      useQueryOptions: {
+        refetchInterval: 30 * 1000,
+      }
     });
 
     const [refreshIn, setRefreshIn] = useState(30);
@@ -27,8 +34,12 @@ export const DashboardPageAdmin = () => {
 
 
 
-    if ( !error && !data ) {
-        return <></>
+    // if ( !error && !data ) {
+    //     return <></>
+    // }
+
+    if (isLoading) {
+      return <><h4>Carganado los datos</h4></>;
     }
 
     if ( error ){
