@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic'
 import { HomePage } from '@/features/next-teslo'
 
 // TODO: Exportar csv para descargar desde el navegador con el contenido de la BD por si se va a chuparla la base de datos y hacer la descarga del csv todos los días con selenium
+// TODO: Poner las categorias como algo generico que se puedan añadir y eliminar, no como hombre,mujer y niño
+// TODO: Subir modelos 3D a un producto al igual que se suben imagenes
 
 const Blob = dynamic(() => import('@/components/canvas/Blob'), { ssr: false })
 const Welcome = dynamic(() => import('@/components/canvas/Welcome'), { ssr: false })
