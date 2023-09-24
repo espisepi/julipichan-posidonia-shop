@@ -1,51 +1,54 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db, SHOP_CONSTANTS } from '@/features/next-teslo'
-import { Product } from '@/features/next-teslo';
-import { IProduct } from '@/features/next-teslo';
+import { Product } from '@/features/next-teslo'
+import { IProduct } from '@/features/next-teslo'
 
-type Data = 
-| { message: string }
-| IProduct[]
+type Data = { message: string } | IProduct[]
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  switch (req.method) {
+    case 'GET':
+      return getProducts(req, res)
 
-    switch( req.method ) {
-        case 'GET':
-            return getProducts( req, res )
-
-        default:
-            return res.status(400).json({
-                message: 'Bad request'
-            })
-    }
+    default:
+      return res.status(400).json({
+        message: 'Bad request',
+      })
+  }
 }
 
-const getProducts = async(req: NextApiRequest, res: NextApiResponse<Data>) => {
-    
-    const { gender = 'all' } = req.query;
+const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+  const { gender = 'all', tags = [] } = req.query
 
-    let condition = {};
+  let condition = {}
 
-    if ( gender !== 'all' && SHOP_CONSTANTS.validGenders.includes(`${gender}`) ) {
-        condition = { gender };
-    }
+  if (gender !== 'all' && SHOP_CONSTANTS.validGenders.includes(`${gender}`)) {
+    condition = { gender }
+  }
 
-    await db.connect();
-    const products = await Product.find(condition)
-                                .select('title images price inStock slug -_id')
-                                .lean();
+  //TODO: Hacer que las tags se envien usando el hook useProducts para traernos las tags a la pagina principal
+  let tagsArray: string[] = []
+  if (typeof tags === 'string') {
+    tagsArray = tags.split(',')
+  }
+  if (tagsArray.length !== 0) {
+    condition = { ...condition, tags: tagsArray }
+  }
 
-    await db.disconnect();
+  await db.connect()
+  const products = await Product.find({ ...condition })
+    .select('title images price inStock slug -_id')
+    .lean()
 
-    const updatedProducts = products.map( product => {
-        product.images = product.images.map( image => {
-            return image.includes('http') ? image : `${ process.env.HOST_NAME}products/${ image }`;
-        });
+  await db.disconnect()
 
-        return product;
+  const updatedProducts = products.map((product) => {
+    product.images = product.images.map((image) => {
+      return image.includes('http') ? image : `${process.env.HOST_NAME}products/${image}`
     })
 
+    return product
+  })
 
-    return res.status(200).json( updatedProducts );
-
+  return res.status(200).json(updatedProducts)
 }
