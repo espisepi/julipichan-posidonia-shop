@@ -1,46 +1,64 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
 
-import { Box, Button, capitalize, Card, CardActions, CardMedia, Checkbox, Chip, Divider, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, ListItem, Paper, Radio, RadioGroup, TextField } from '@mui/material';
-import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import {
+  Box,
+  Button,
+  capitalize,
+  Card,
+  CardActions,
+  CardMedia,
+  Checkbox,
+  Chip,
+  Divider,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  Grid,
+  ListItem,
+  Paper,
+  Radio,
+  RadioGroup,
+  TextField,
+} from '@mui/material'
+import { DriveFileRenameOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material'
 
-import { AdminLayout, useCreateProduct } from '@/features/next-teslo';
-import { IProduct } from '@/features/next-teslo';
-import { dbProducts } from '@/features/next-teslo';
-import { tesloApi } from '@/features/next-teslo';
-import { Product } from '@/features/next-teslo';
-import { fixUrlImage } from '@/features/next-teslo/utils/images';
+import { AdminLayout, useCreateProduct } from '@/features/next-teslo'
+import { IProduct } from '@/features/next-teslo'
+import { dbProducts } from '@/features/next-teslo'
+import { tesloApi } from '@/features/next-teslo'
+import { Product } from '@/features/next-teslo'
+import { fixUrlImage } from '@/features/next-teslo/utils/images'
 
-
-const validTypes  = ['shirts','pants','hoodies','hats']
-const validGender = ['men','women','kid','unisex']
-const validSizes = ['XS','S','M','L','XL','XXL','XXXL']
-
+const validTypes = ['shirts', 'pants', 'hoodies', 'hats']
+const validGender = ['men', 'women', 'kid', 'unisex']
+const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
 
 interface FormData {
-    _id?       : string;
-    description: string;
-    images     : string[];
-    inStock    : number;
-    price      : number;
-    sizes      : string[];
-    slug       : string;
-    tags       : string[];
-    title      : string;
-    type       : string;
-    gender     : string;
+  _id?: string
+  description: string
+  images: string[]
+  inStock: number
+  price: number
+  sizes: string[]
+  slug: string
+  tags: string[]
+  title: string
+  type: string
+  gender: string
 }
-
 
 interface Props {
-    product: IProduct;
+  product: IProduct
 }
 
-export const ProductPageAdmin:FC<Props> = ({ product }) => {
+export const ProductPageAdmin: FC<Props> = ({ product }) => {
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const fileInputGLBRef = useRef<HTMLInputElement>(null)
   const [newTagValue, setNewTagValue] = useState('')
   const [isSaving, setIsSaving] = useState(false)
 
@@ -115,6 +133,44 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
     }
   }
 
+  const onFilesGLBSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (!target.files || target.files.length === 0) {
+      return
+    }
+
+    try {
+      // @ts-ignore
+      for (const file of target.files) {
+        // console.log( file );
+        const formData = new FormData()
+        formData.append('file', file)
+        const { data } = await tesloApi.post<{ message: string }>('/admin/uploadglb', formData)
+        console.log('OYEEEEE EL DATA: ', { data })
+        // TODO: Mostrar los modelos 3D subidos
+        // setValue('images', [...getValues('images'), data.message], { shouldValidate: true })
+      }
+    } catch (error) {
+      console.log({ error })
+    }
+
+    // if (!file) return
+
+    // const formData = new FormData()
+    // formData.append('glbFile', file)
+
+    // try {
+    //   const response = await axios.post('/api/upload', formData, {
+    //     headers: { 'Content-Type': 'multipart/form-data' },
+    //   })
+
+    //   if (response.status === 200) {
+    //     console.log('Archivo GLB cargado con éxito')
+    //   }
+    // } catch (error) {
+    //   console.error('Error al cargar el archivo GLB', error)
+    // }
+  }
+
   const onDeleteImage = (image: string) => {
     setValue(
       'images',
@@ -135,13 +191,14 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
     }
   }
 
+  const createProduct = useCreateProduct({ onSuccess })
 
-  const createProduct = useCreateProduct({ onSuccess });
-
-  if(createProduct.error) {
-    console.error("========== Ha habido el siguiente error en la funcion createProduct (react-query) ===============");
+  if (createProduct.error) {
+    console.error('========== Ha habido el siguiente error en la funcion createProduct (react-query) ===============')
     console.error(createProduct.error)
-    console.error('========== FIN Ha habido el siguiente error en la funcion createProduct (react-query) ===============');
+    console.error(
+      '========== FIN Ha habido el siguiente error en la funcion createProduct (react-query) ===============',
+    )
   }
 
   const onSubmit = async (form: FormData) => {
@@ -384,6 +441,49 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
                 ))}
               </Grid>
             </Box>
+
+            {/* Subir modelos 3D GLB aka GLTF */}
+            <Box display='flex' flexDirection='column'>
+              <FormLabel sx={{ mb: 1 }}>Modelo 3D GLB</FormLabel>
+              <Button
+                color='secondary'
+                fullWidth
+                startIcon={<UploadOutlined />}
+                sx={{ mb: 3 }}
+                onClick={() => fileInputGLBRef.current?.click()}>
+                Cargar Modelo 3D GLB
+              </Button>
+              <input
+                ref={fileInputGLBRef}
+                type='file'
+                multiple
+                accept='.glb'
+                style={{ display: 'none' }}
+                onChange={onFilesGLBSelected}
+              />
+
+              {/* <Chip
+                label='Es necesario al 2 imagenes'
+                color='error'
+                variant='outlined'
+                sx={{ display: getValues('images').length < 2 ? 'flex' : 'none' }}
+              />
+
+              <Grid container spacing={2}>
+                {getValues('images').map((img) => (
+                  <Grid item xs={4} sm={3} key={img}>
+                    <Card>
+                      <CardMedia component='img' className='fadeIn' image={fixUrlImage(img) as string} alt={img} />
+                      <CardActions>
+                        <Button fullWidth color='error' onClick={() => onDeleteImage(img)}>
+                          Borrar
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid> */}
+            </Box>
           </Grid>
         </Grid>
       </form>
@@ -394,11 +494,10 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-
 // export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-    
+
 //     const { slug = ''} = query;
-    
+
 //     let product: IProduct | null;
 
 //     if ( slug === 'new' ) {
@@ -420,7 +519,6 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
 //             }
 //         }
 //     }
-    
 
 //     return {
 //         props: {
@@ -428,6 +526,5 @@ export const ProductPageAdmin:FC<Props> = ({ product }) => {
 //         }
 //     }
 // }
-
 
 //export default ProductAdminPage
